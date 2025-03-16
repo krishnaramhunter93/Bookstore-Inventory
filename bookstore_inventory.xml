@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog>
-    <book id="1" available="true">
-        <title>The Great Gatsby</title>
-        <author>
-            <firstName>F. Scott</firstName>
-            <lastName>Fitzgerald</lastName>
-        </author>
-        <publicationYear>1925</publicationYear>
-        <publisher>Charles Scribner's Sons</publisher>
-        <pageCount>218</pageCount>
-    </book>
-    <book id="2" available="true">
-        <title>To Kill a Mockingbird</title>
-        <author>
-            <firstName>Harper</firstName>
-            <lastName>Lee</lastName>
-        </author>
-        <publicationYear>1960</publicationYear>
-        <publisher>J.B. Lippincott & Co.</publisher>
-        <pageCount>281</pageCount>
-    </book>
-    <book id="3" available="false">
-        <title>1984</title>
-        <author>
-            <firstName>George</firstName>
-            <lastName>Orwell</lastName>
-        </author>
-        <publicationYear>1949</publicationYear>
-        <publisher>Secker & Warburg</publisher>
-        <pageCount>328</pageCount>
-    </book>
-</catalog>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="catalog">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="book" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="title" type="xs:string"/>
+                            <xs:element name="publicationYear" type="xs:int"/>
+                            <xs:element name="author">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="firstName" type="xs:string"/>
+                                        <xs:element name="lastName" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:string" use="required"/>
+                        <xs:attribute name="available" type="xs:boolean" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
