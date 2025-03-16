@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Inventory</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { font-size: 24px; font-weight: bold; }
+        ul { list-style-type: disc; padding-left: 20px; } /* Add bullet points */
+        li { margin-top: 10px; }
+        .book-title { font-size: 18px; font-weight: bold; }
+        .book-details { font-size: 16px; margin-left: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1>Bookstore Inventory</h1>
+    <ul id="book-list"></ul>
+
+    <script>
+        const bookstoreInventory = {
+            books: [
+                {
+                    title: "The Great Gatsby",
+                    author: { firstName: "F. Scott", lastName: "Fitzgerald" },
+                    publicationYear: 1925,
+                    details: { publisher: "Charles Scribner's Sons", pageCount: 218, available: true }
+                },
+                {
+                    title: "To Kill a Mockingbird",
+                    author: { firstName: "Harper", lastName: "Lee" },
+                    publicationYear: 1960,
+                    details: { publisher: "J.B. Lippincott & Co.", pageCount: 281, available: true }
+                },
+                {
+                    title: "1984",
+                    author: { firstName: "George", lastName: "Orwell" },
+                    publicationYear: 1949,
+                    details: { publisher: "Secker & Warburg", pageCount: 328, available: false }
+                }
+            ]
+        };
+
+        function displayBooks() {
+            const bookList = document.getElementById('book-list');
+            bookstoreInventory.books.forEach(book => {
+                const bookItem = document.createElement('li');
+                bookItem.innerHTML = `
+                    <div class="book-title">${book.title}</div>
+                    <div class="book-details">
+                        Author: ${book.author.firstName} ${book.author.lastName} <br>
+                        Publication Year: ${book.publicationYear} <br>
+                        Publisher: ${book.details.publisher} <br>
+                        Page Count: ${book.details.pageCount} <br>
+                        Available: ${book.details.available ? 'Yes' : 'No'}
+                    </div>
+                `;
+                bookList.appendChild(bookItem);
+            });
+        }
+
+        displayBooks();
+    </script>
+
+</body>
+</html>
